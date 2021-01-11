@@ -1,6 +1,7 @@
 # Cognition Android SDK
 
-The goal of the Mobile SDK Documentation is to give Android developers the ability to implement device intelligence and behavior analytics for use with Precognitive's fraud prevention platform.
+The goal of the Mobile SDK Documentation is to give Android developers the ability to implement 
+device intelligence and behavior analytics for use with Precognitive's fraud prevention platform.
 
 ## Requirements
 
@@ -15,35 +16,26 @@ Please follow the instructions below to install the SDK in your application:
 
 [cognition-2.1.2.aar](lib/cognition-2.1.2.aar)
 
-[older versions](lib/index.html)
+Or, click here if you are looking for [older versions](lib/index.html).
 
-2. Add the SDK to your project:
-    * Click File > New > New Module.
-    * Click Import .JAR/.AAR Package then click Next.
-    * Enter the location of cognition-n.n.n.aar then click Finish.
+2. Move the downloaded SDK .aar file into your application's library directory, 
+commonly `lib` or `libs`.
     
-3. Make sure the library is listed at the top of your settings.gradle file, as shown here for a library named "cognition-release":
-
-```gradle
-include ':app', ':cognition-release'
-```
-
-4. Open the app module's build.gradle file and add a new line to the dependencies block as shown in the following snippet:
+3. Open the app module's build.gradle file and add a new line to the dependencies block as 
+shown in the following snippet:
 
 ```gradle
 dependencies {
-    implementation project(":cognition-release")
+    implementation files('libs/cognition-2.1.2.aar')
     
     // AppCompat is required for checking permissions
     implementation 'androidx.appcompat:appcompat:1.1.0'
 }
 ```
 
-5. Click Sync Project with Gradle Files.
+4. Click Sync Project with Gradle Files.
 
 **NOTE**: You may need to invalidate your cache & restart.
-
-**source:** [Create an Android library](https://developer.android.com/studio/projects/android-library)
 
 ## Usage & Integration
 
@@ -51,7 +43,7 @@ Cognition utilizes background processing to handle fingerprinting. You must impl
 portions of the Activity LifeCycle. 
 
 **Example**
-```java
+```kotlin
 import android.app.Application;
 
 import cognition.android.Cognition;
