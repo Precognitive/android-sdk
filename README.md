@@ -13,7 +13,9 @@ Please follow the instructions below to install the SDK in your application:
 
 1. Download the latest version of the Cognition Android SDK.
 
-[cognition-2.1.2.aar](/lib/cognition-2.1.2.aar) [older versions](/lib/index.html)
+[cognition-2.1.2.aar](/lib/cognition-2.1.2.aar)
+
+[older versions](/lib/index.html)
 
 2. Add the SDK to your project:
     * Click File > New > New Module.
