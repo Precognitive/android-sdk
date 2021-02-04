@@ -14,7 +14,7 @@ Please follow the instructions below to install the SDK in your application:
 
 1. Download the latest version of the Cognition Android SDK.
 
-    [cognition-2.1.2.aar](lib/cognition-2.1.2.aar)
+    [cognition-2.2.0.aar](lib/cognition-2.2.0.aar)
 
     Or, click here if you are looking for [older versions](lib/index.html).
 
@@ -26,7 +26,7 @@ shown in the following snippet:
 
 ```gradle
 dependencies {
-    implementation files('libs/cognition-2.1.2.aar')
+    implementation files('libs/cognition-2.2.0.aar')
     
     // AppCompat is required for checking permissions
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -43,6 +43,7 @@ Cognition utilizes background processing to handle fingerprinting. You must impl
 portions of the Activity LifeCycle. 
 
 **Example**
+
 ```kotlin
 import android.app.Application;
 
@@ -66,6 +67,8 @@ public class DemoApplication extends Application {
         config.setLogLevel(CognitionLogLevel.VERBOSE);
         config.setInterval(Cognition.Config.INTERVAL_NORMAL);
         config.setSensorDelay(Cognition.Config.SENSOR_DELAY_NORMAL);
+        // optional configs
+        config.setLocationAccuracyDecimalPlaces(2)
 
         // Example: eventId and the userId
         Cognition.setEventId(getServerSessionId());
@@ -88,6 +91,7 @@ above, and manually call Cognition.resume(context) to start the Cognition servic
 and Cognition.pause() to stop the Cognition service as desired.
 
 **Example**
+
 ```java
 import android.app.Application;
 
@@ -111,6 +115,8 @@ public class DemoApplication extends Application {
         config.setLogLevel(CognitionLogLevel.VERBOSE);
         config.setInterval(Cognition.Config.INTERVAL_NORMAL);
         config.setSensorDelay(Cognition.Config.SENSOR_DELAY_NORMAL);
+        // optional configs
+        config.setLocationAccuracyDecimalPlaces(2)
 
         // Example: eventId and the userId
         Cognition.setEventId(getServerSessionId());
@@ -277,6 +283,9 @@ The Config class is utilized to build out the configuration for the Cognition SD
 | setLogLevel         | cognition.android.Cognition.CognitionLogLevel logLevel              | cognition.android.Cognition.Config        | Used to set the log level for the SDK, follows standard ERROR, VERBOSE, WARN terminology.                   |
 | optIn               | cognition.android.Cognition.CognitionDataOpt optInGroup             | cognition.android.Cognition.Config        | Used to opt-in to a data collection group. Certain data groups are automatically enabled (i.e. Keystrokes). |
 | optOut              | cognition.android.Cognition.CognitionDataOpt optOutGroup            | cognition.android.Cognition.Config        | Used to opt-out of a data collection group. Certain data groups are automatically disabled (i.e. Location). |
+| setLocationAccuracyDecimalPlaces              | int decimalPlaces            | cognition.android.Cognition.Config        | Used to control the number of decimal places collected for location coordinates. |
+
+
 | initialize**        |                                                                     | cognition.android.Cognition.Config        | Builds the final config object to be passed to the Cognition.start method.                                  |
 
 **NOTE:** If you do NOT call `config.initialize()` prior to calling `Cognition.start()` an uncaught Exception will be thrown. You MUST call `initialize`.
