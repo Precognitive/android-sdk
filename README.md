@@ -24,14 +24,14 @@ commonly `lib` or `libs`.
 3. Open the app module's build.gradle file and add a new line to the dependencies block as 
 shown in the following snippet:
 
-```gradle
+   ```gradle
 dependencies {
     implementation files('libs/cognition-2.2.0.aar')
     
     // AppCompat is required for checking permissions
     implementation 'androidx.appcompat:appcompat:1.1.0'
 }
-```
+   ```
 
 4. Click Sync Project with Gradle Files.
 
@@ -225,10 +225,10 @@ The Cognition Class is the main interface for working with the SDK. This can be 
 
 | Method                    | Params                                                                          | Returns               | Description                                                                                                                            |
 |---------------------------|---------------------------------------------------------------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| analyze                   | Context context                                                                 | void                  | Used to automatically run all monitoring and submit all data. This can be submitted prior to processing an order, login etc.           |
-| analyze                   | Context context, cognition.android.Cognition.Config config                      | void                  | Used to automatically run all monitoring and submit all data. This can be submitted prior to processing an order, login etc.           |
-| analyzeBiometrics         | Context context                                                                 | void                  | Used to automatically sample biometrics data and submit to API. This can be submitted prior a login.                                   |
-| analyzeBiometrics         | Context context, cognition.android.Cognition.Config config                      | void                  | Used to automatically sample biometrics data and submit to API. This can be submitted prior a login.                                   |
+| analyze                   | Context context                                                                 | void                  | Used to automatically run all monitoring and submit all data. This can be submitted prior to processing an order, login etc. In this case, it should also be called at the start of the activity/flow as well to ensure the issuance of a valid session id.           |
+| analyze                   | Context context, cognition.android.Cognition.Config config                      | void                  | Used to automatically run all monitoring and submit all data. This can be submitted prior to processing an order, login etc. In this case, it should also be called at the start of the activity/flow as well to ensure the issuance of a valid session id.          |
+| analyzeBiometrics         | Context context                                                                 | void                  | Used to automatically sample biometrics data and submit to API. This can be submitted prior a login.  |
+| analyzeBiometrics         | Context context, cognition.android.Cognition.Config config                      | void                  | Used to automatically sample biometrics data and submit to API. This can be submitted prior a login. |
 | addUsernameListener       | TextView view                                                                   | void                  | Pass in a TextView field to listen to the Keystroke Dynamics for the user. This is associated to the username field.                   |
 | addPasswordListener       | TextView view                                                                   | void                  | Pass in a TextView field to listen to the Keystroke Dynamics for the user. This is associated to the password field.                   |
 | removeUsernameListener    | TextView view                                                                   | void                  | Used to remove the username field listener.                                                                                            |
