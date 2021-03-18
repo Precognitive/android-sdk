@@ -24,14 +24,14 @@ commonly `lib` or `libs`.
 3. Open the app module's build.gradle file and add a new line to the dependencies block as 
 shown in the following snippet:
 
-```gradle
+   ```gradle
 dependencies {
     implementation files('libs/cognition-2.2.0.aar')
     
     // AppCompat is required for checking permissions
     implementation 'androidx.appcompat:appcompat:1.1.0'
 }
-```
+   ```
 
 4. Click Sync Project with Gradle Files.
 
